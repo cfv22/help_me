@@ -1,40 +1,36 @@
-<nav class="navbar navbar-inverse">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">Help Me</a>
-  </div>
-  <ul class="nav navbar-nav">
-    <li class="active"><a href="#">Problemas</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Salir</a></li>
-    </ul>
-</div>
-</nav>
-<h1> Problemas </h1>
-<hr>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Mesero</th>
-      <th>Mesa</th>
-      <th>Detalle</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= "nombre" %></td>
-        <td><%= order.board %></td>
-        <td><%= link_to "D", order_path(order) %></td>
-        <td><%= link_to "E", edit_order_path(order) %></td>
-        <td><%= link_to "X" ,order_path(order),  method: :delete, data: {confirm: "Estas seguro?"}  %></td>
-      </tr>
-    <% end %> 
-  </tbody>
-</table>
+<div class="container">
+<div class="d-flex bd-highlight"> 
+    <div class="p-2 flex-grow-1 bd-highlight">
+
+        <h1 class="mx-auto"> Problemas </h1> 
+    </div> 
+
+    <div class="p-2 bd-highlight"> 
+        <a href="#" class="btn btn-primary">Nuevo Problema +</a>
+    </div> 
+</div> 
+
+
+        <% @issues.each do |issue| %>
+            <div class="d-flex bd-highlight shadow p-3 mb-5 bg-white rounded">                                
+            <div class="p-2 flex-grow-1 bd-highlight">
+                <h5 class="card-title"><%= issue.title %></h5>
+                <p class="card-text">Creado por <%= issue.user.email %> el <%=issue.created_at.strftime("%d de %b del %Y")%> </p>
+            </div>
+            <div class="p-2 bd-highlight">
+                <p class="card-text "><%= (issue.open) ? "Abierto" : "Cerrado"  %></p>
+            </div>   
+            <div class="p-2 bd-highlight"> 
+                <a href="/issues/<%= issue.id %>" class="btn btn-primary">Ver</a>
+            </div> 
+            </div> 
+                    
+        <% end %> 
+                
+            
+
+        </div>
+
+    </div>
+</div>

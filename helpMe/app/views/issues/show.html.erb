@@ -1,0 +1,39 @@
+<div class="container">
+<div class="d-inline-flex p-3">
+    <a href="/issues" class="btn btn-primary"> << Volver </a>
+</div>
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+    <div class="d-flex bd-highlight">                                
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <h5 ><%= @issue.title %></h5>
+            <p >Creado por <%= @issue.user.email %> el <%=@issue.created_at.strftime("%d de %b del %Y")%> </p>
+        </div> 
+        <div class="p-2 bd-highlight"> 
+            <a href="/issues/<%= @issue.id %>" class="btn btn-primary">Cerrar Problema</a>
+        </div> 
+    </div> 
+    <div class="d-inline-flex p-2">
+        <p> <%=@issue.description %></p>
+    </div>
+    <div class="d-inline-flex p-2">
+    <% @issue.comments.each do |comment| %>
+        <div class="d-flex bd-highlight shadow p-3 mb-5 bg-white rounded">                                
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <h5 class="card-title"><%= comment.title %></h5>
+            <p class="card-text">Creado por <%= issue.user.email %> el <%=issue.created_at.strftime("%d de %b del %Y")%> </p>
+        </div>
+        <div class="p-2 bd-highlight">
+            <p class="card-text "><%= (issue.open) ? "Abierto" : "Cerrado"  %></p>
+        </div>   
+        <div class="p-2 bd-highlight"> 
+            <a href="/issues/<%= issue.id %>" class="btn btn-primary">Ver</a>
+        </div> 
+        </div> 
+                
+    <% end %> 
+    </div>
+
+</div> 
+</div> 
+
